@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #0f0f0f;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+#intro-animation {
+    text-align: center;
+}
+
+.brand-container {
+    position: relative;
+    height: 100px;
+}
+
+.logo-img {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 0 10px #ffffff); /* Efecto "glow" para imágenes */
+    animation: 
+        flyIn 1.5s forwards, 
+        flyToRight 0.8s 1.5s forwards;
+}
+
+.logo-text {
+    opacity: 0;
+    height: 90px; /* Ajusta esto según tu imagen */
+    filter: drop-shadow(0 0 10px #ffffff);
+    animation: 
+        fadeIn 1s 2s forwards, 
+        glow 1.5s 3s infinite alternate;
+}
+
+/* Elimina las reglas de .logo y .logo sup (ya no las necesitamos) */
+
+/* Animaciones clave */
+@keyframes flyIn {
+    0% { top: -100px; opacity: 0; }
+    100% { top: 0; opacity: 1; }
+}
+
+@keyframes flyToRight {
+    100% { 
+        left: 100%; 
+        transform: translateX(calc(-100% + 130px)); /* Ajusta este valor para mover más/menos a la derecha */
+    }
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #fff, 0 0 20px #ff5e00; }
+    to { text-shadow: 0 0 20px #fff, 0 0 30px #ff5e00; }
+}
